@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.testfirebase.databinding.ActivityMainBinding
+import com.example.testfirebase.ui.CloudMessagingActivity
 import com.example.testfirebase.ui.WriteReadDelActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         binding.writeAndRead.setOnClickListener(this)
+        binding.CloudMessagingActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.write_and_read -> {
                 val intent =
                     Intent(this@MainActivity, WriteReadDelActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.CloudMessagingActivity -> {
+                val intent =
+                    Intent(this@MainActivity, CloudMessagingActivity::class.java)
                 startActivity(intent)
             }
         }
