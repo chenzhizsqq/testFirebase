@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.testfirebase.databinding.ActivityMainBinding
-import com.example.testfirebase.helloworld.HelloworldActivity
+import com.example.testfirebase.ui.WriteAndReadActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.testHelloworld.setOnClickListener(this)
+        binding.writeAndRead.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.testHelloworld -> {
+            R.id.write_and_read -> {
                 val intent =
-                    Intent(this@MainActivity, HelloworldActivity::class.java)
+                    Intent(this@MainActivity, WriteAndReadActivity::class.java)
                 startActivity(intent)
             }
         }
