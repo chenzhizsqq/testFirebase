@@ -15,7 +15,7 @@
             android:name=".ui.ReadActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.WriteAndReadActivity"
+            android:name=".ui.WriteReadDelActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
