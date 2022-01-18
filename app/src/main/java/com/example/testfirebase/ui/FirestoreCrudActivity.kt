@@ -19,13 +19,14 @@ class FirestoreCrudActivity : AppCompatActivity() {
 
         //写入
         binding.write.setOnClickListener {
-            val text: String = binding.etWrite.text.toString()
+            val writeText: String = binding.etWrite.text.toString()
             val collect = db.collection("testId")
             collect.add(
                 mapOf(
-                    "name" to text,
+                    "name" to writeText,
+                    "id" to System.currentTimeMillis(),
                 )
-            ).addOnCompleteListener {
+            ).addOnSuccessListener {
                 Toast.makeText(this, "记录成功", Toast.LENGTH_SHORT).show()
             }
         }
@@ -34,13 +35,11 @@ class FirestoreCrudActivity : AppCompatActivity() {
         binding.read.setOnClickListener {
             val collect = db.collection("testId")
             collect.get().addOnSuccessListener {
-                //Toast.makeText(this, "成功读取： ${it.documents[0]}", Toast.LENGTH_SHORT).show()
                 if (it.size() == 0) {
                     Toast.makeText(this, "数据为空", Toast.LENGTH_SHORT).show()
                 } else {
                     it.forEach { each ->
                         Log.e("TAG", "onCreate: forEach:" + each.data.toString())
-
                     }
                 }
             }.addOnFailureListener {
@@ -94,8 +93,9 @@ class FirestoreCrudActivity : AppCompatActivity() {
                 .set(
                     mapOf(
                         "name" to text,
+                        "id" to System.currentTimeMillis(),
                     )
-                ).addOnCompleteListener {
+                ).addOnSuccessListener {
                     Toast.makeText(this, "特定地方写入或修改:记录成功", Toast.LENGTH_SHORT).show()
                 }
         }
@@ -119,13 +119,14 @@ class FirestoreCrudActivity : AppCompatActivity() {
             db.collection("testId")
                 .document("PLANET_EARTH")
                 .delete()
-                .addOnCompleteListener {
+                .addOnSuccessListener {
                     Toast.makeText(this, "特定地方删除：成功", Toast.LENGTH_SHORT).show()
                 }
         }
 
         //创建子集合
         binding.createChild.setOnClickListener {
+            val writeText: String = binding.etWrite.text.toString()
             val collect = db.collection("testId")
 
             //创建子集合
@@ -135,11 +136,11 @@ class FirestoreCrudActivity : AppCompatActivity() {
             //子集合中添加数据
             satellitesOfEarth.add(
                 mapOf(
-                    "name" to "The Moon",
-                    "gravity" to 1.62,
-                    "radius" to 1738
+                    "name" to "child_$writeText",
+                    "id" to System.currentTimeMillis(),
+
                 )
-            ).addOnCompleteListener {
+            ).addOnSuccessListener {
                 Toast.makeText(this, "子集合中添加数据：成功", Toast.LENGTH_SHORT).show()
             }
         }
