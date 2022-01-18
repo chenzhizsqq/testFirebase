@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.testfirebase.databinding.ActivityFirestoreCrudBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
+//https://blog.csdn.net/cunjie3951/article/details/106918461
 class FirestoreCrudActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFirestoreCrudBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class FirestoreCrudActivity : AppCompatActivity() {
             val collect = db.collection("testId")
             collect.add(
                 mapOf(
-                    "textTest" to text,
+                    "name" to text,
                 )
             ).addOnCompleteListener {
                 Toast.makeText(this, "记录成功", Toast.LENGTH_SHORT).show()
@@ -61,6 +62,29 @@ class FirestoreCrudActivity : AppCompatActivity() {
             }
         }
 
+        //运行查询
+        binding.select.setOnClickListener {
+            val selectEdit: String = binding.selectEdit.text.toString()
+            val collect = db.collection("testId")
+            collect.whereEqualTo("name", selectEdit)
+                .get().addOnSuccessListener {
+                    if (it.isEmpty) {
+                        Toast.makeText(this, "运行查询:没有找到", Toast.LENGTH_SHORT).show()
+                    } else {
+                        it.forEach {
+                            Toast.makeText(
+                                this,
+                                "找到了\"name\"的值是： ${it.get("name")}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(this, "运行查询:错误", Toast.LENGTH_SHORT).show()
+                }
+
+        }
+
         //特定地方写入或修改
         binding.writeByName.setOnClickListener {
             val text: String = binding.etWrite.text.toString()
@@ -69,7 +93,7 @@ class FirestoreCrudActivity : AppCompatActivity() {
                 .document("PLANET_EARTH")
                 .set(
                     mapOf(
-                        "textTest" to text,
+                        "name" to text,
                     )
                 ).addOnCompleteListener {
                     Toast.makeText(this, "特定地方写入或修改:记录成功", Toast.LENGTH_SHORT).show()
@@ -119,5 +143,7 @@ class FirestoreCrudActivity : AppCompatActivity() {
                 Toast.makeText(this, "子集合中添加数据：成功", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 }
