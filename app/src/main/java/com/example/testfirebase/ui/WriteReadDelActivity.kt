@@ -1,8 +1,8 @@
 package com.example.testfirebase.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.testfirebase.databinding.ActivityWriteReadDelBinding
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -20,7 +20,8 @@ class WriteReadDelActivity : AppCompatActivity() {
             val database = Firebase.database
             val myRef = database.getReference("message")
             myRef.setValue(binding.etWrite.text.toString())
-            Toast.makeText(this, "成功写入：${binding.etWrite.text.toString()}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "成功写入：${binding.etWrite.text}", Toast.LENGTH_SHORT)
+                .show()
         }
 
         //读取

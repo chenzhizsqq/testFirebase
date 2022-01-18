@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/back.xml" value="0.12407407407407407" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_cloud_messaging.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_firestore_crud.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_helloworld.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_read.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_write.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_write_read_del.xml" value="0.1" />
       </map>
     </option>
   </component>

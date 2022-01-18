@@ -22,6 +22,14 @@
             android:background="@drawable/back"
             android:text="简单的读、写、删除" />
         <TextView
+            android:id="@+id/FirestoreCrudActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:text="Firestore 简单的读、写、删除:相当于SQL处理的数据" />
+        <TextView
             android:id="@+id/CloudMessagingActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
