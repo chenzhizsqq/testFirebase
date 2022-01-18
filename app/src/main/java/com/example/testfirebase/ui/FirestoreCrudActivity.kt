@@ -60,5 +60,64 @@ class FirestoreCrudActivity : AppCompatActivity() {
                 Toast.makeText(this, "删除失败", Toast.LENGTH_SHORT).show()
             }
         }
+
+        //特定地方写入或修改
+        binding.writeByName.setOnClickListener {
+            val text: String = binding.etWrite.text.toString()
+            val collect = db.collection("testId")
+            collect
+                .document("PLANET_EARTH")
+                .set(
+                    mapOf(
+                        "textTest" to text,
+                    )
+                ).addOnCompleteListener {
+                    Toast.makeText(this, "特定地方写入或修改:记录成功", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        //特定地方读取
+        binding.readByName.setOnClickListener {
+            val text: String = binding.etWrite.text.toString()
+            val collect = db.collection("testId")
+            collect
+                .document("PLANET_EARTH")
+                .get().addOnSuccessListener {
+                    Toast.makeText(this, "读取成功:${it.data?.values}", Toast.LENGTH_SHORT).show()
+                    Log.e("TAG", "onCreate:readByName: 读取成功:${it.data?.values}")
+                }.addOnFailureListener {
+                    Toast.makeText(this, "读取失败", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        //特定地方删除
+        binding.deleteByName.setOnClickListener {
+            db.collection("testId")
+                .document("PLANET_EARTH")
+                .delete()
+                .addOnCompleteListener {
+                    Toast.makeText(this, "特定地方删除：成功", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        //创建子集合
+        binding.createChild.setOnClickListener {
+            val collect = db.collection("testId")
+
+            //创建子集合
+            val satellitesOfEarth = collect.document("PLANET_EARTH")
+                .collection("satellites")
+
+            //子集合中添加数据
+            satellitesOfEarth.add(
+                mapOf(
+                    "name" to "The Moon",
+                    "gravity" to 1.62,
+                    "radius" to 1738
+                )
+            ).addOnCompleteListener {
+                Toast.makeText(this, "子集合中添加数据：成功", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

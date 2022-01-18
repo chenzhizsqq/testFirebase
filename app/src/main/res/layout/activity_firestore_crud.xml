@@ -15,35 +15,66 @@ tools:context=".ui.FirestoreCrudActivity">
     android:gravity="center"
     android:layout_margin="10dp"
     android:orientation="vertical">
+
     <EditText
         android:id="@+id/etWrite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:layout_margin="10dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="write" />
+        android:text="不特定地方:write" />
     <Button
         android:id="@+id/read"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="read" />
+        android:text="不特定地方:read" />
     <Button
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="delete" />
+        android:text="不特定地方:delete" />
 
+
+    <Button
+        android:id="@+id/writeByName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="特定地方写入或修改" />
+
+    <Button
+        android:id="@+id/readByName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="特定地方读取" />
+
+
+    <Button
+        android:id="@+id/deleteByName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="特定地方删除" />
+
+
+    <Button
+        android:id="@+id/createChild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="创建子集合" />
 
 </LinearLayout>
 
