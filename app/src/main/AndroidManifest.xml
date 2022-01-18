@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFirebase">
         <activity
+            android:name=".ui.FirestoreCrudActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.CloudMessagingActivity"
             android:exported="true" />
         <activity

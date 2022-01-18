@@ -54,4 +54,8 @@ dependencies {
 
     //firebase-messaging 云端通知
     implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    // Firebase Core 就像SQL，对应着普通的文本数据
+    implementation 'com.google.firebase:firebase-core:20.0.2'
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
 }
