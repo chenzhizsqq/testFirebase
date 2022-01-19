@@ -14,6 +14,14 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/authentication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:text="Authentication:身份验证用户登录" />
+        <TextView
             android:id="@+id/write_and_read"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
