@@ -52,6 +52,18 @@ tools:context=".ui.WriteReadDelActivity">
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="delete" />
+    <Button
+        android:id="@+id/jsonWrite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="json Write" />
+    <Button
+        android:id="@+id/jsonRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="json Read" />
 
 
 </LinearLayout>
