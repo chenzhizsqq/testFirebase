@@ -23,9 +23,20 @@ class WriteReadDelActivity : AppCompatActivity() {
         binding.write.setOnClickListener {
             val database = Firebase.database
             val myRef = database.getReference("message")
-            myRef.setValue(binding.etWrite.text.toString())
-            Toast.makeText(this, "成功写入：${binding.etWrite.text}", Toast.LENGTH_SHORT)
-                .show()
+            myRef.setValue(binding.etWrite.text.toString()).addOnSuccessListener {
+                Toast.makeText(this, "成功写入：${binding.etWrite.text}", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+        //双层的子层写入
+        binding.doubleLevelWrite.setOnClickListener {
+            val database = Firebase.database
+            val myRef = database.getReference("level1").child("level2")
+            myRef.setValue(binding.etWrite.text.toString()).addOnSuccessListener {
+                Toast.makeText(this, "双层的子层写入：${binding.etWrite.text}", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
         //读取
@@ -34,7 +45,7 @@ class WriteReadDelActivity : AppCompatActivity() {
             database.getReference("message").get().addOnSuccessListener {
                 Toast.makeText(this, "成功读取： ${it.value}", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
-                Toast.makeText(this, "addOnFailureListener", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "不成功读取", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -43,6 +54,8 @@ class WriteReadDelActivity : AppCompatActivity() {
             val database = Firebase.database
             database.getReference("message").removeValue().addOnSuccessListener {
                 Toast.makeText(this, "成功删除!", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "不成功删除", Toast.LENGTH_SHORT).show()
             }
         }
     }

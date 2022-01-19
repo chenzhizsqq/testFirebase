@@ -139,7 +139,7 @@ class FirestoreCrudActivity : AppCompatActivity() {
                     "name" to "child_$writeText",
                     "id" to System.currentTimeMillis(),
 
-                )
+                    )
             ).addOnSuccessListener {
                 Toast.makeText(this, "子集合中添加数据：成功", Toast.LENGTH_SHORT).show()
             }
