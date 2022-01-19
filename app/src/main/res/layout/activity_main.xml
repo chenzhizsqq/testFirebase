@@ -20,7 +20,7 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:background="@drawable/back"
-            android:text="简单的读、写、删除" />
+            android:text="Realtime Database 简单的读、写、删除:常用在存储json数据" />
         <TextView
             android:id="@+id/FirestoreCrudActivity"
             android:layout_width="match_parent"
