@@ -80,8 +80,8 @@ class WriteReadDelActivity : AppCompatActivity() {
     }
 
     //json读取 begin
-    private val mTestReadViewModel = TestViewModel()
     private fun jsonRead() {
+        val mTestReadViewModel = TestViewModel()
         binding.jsonRead.setOnClickListener {
             val database = Firebase.database
             database.getReference(testJsonDir).get().addOnSuccessListener {
@@ -100,9 +100,9 @@ class WriteReadDelActivity : AppCompatActivity() {
 
 
     //json写入 jsonWrite() begin
-    lateinit var mJsonWriteList: ArrayList<PostsData>
     private fun jsonWrite() {
         val mTestViewModel = TestViewModel()
+        lateinit var mJsonWriteList: ArrayList<PostsData>
         binding.jsonWrite.setOnClickListener {
             mJsonWriteList = ArrayList()
             for (i in 0..5) {
