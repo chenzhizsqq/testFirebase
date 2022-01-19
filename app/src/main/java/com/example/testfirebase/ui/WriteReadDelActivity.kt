@@ -8,8 +8,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.testfirebase.databinding.ActivityWriteReadDelBinding
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+
+
+//json 处理的类
+data class PostsData(val id: Int, val title: String)
+class TestViewModel : ViewModel() {
+    //专门对应json数据中的posts数据List
+    val postsDataList = MutableLiveData<List<PostsData>>()
+}
+//json 处理的类
 
 //Firebase Realtime Database 是一种托管在云端的数据库。
 // 数据以 JSON 格式存储并实时同步到每个连接的客户端。
@@ -71,13 +79,14 @@ class WriteReadDelActivity : AppCompatActivity() {
         jsonRead()
     }
 
-    val mTestReadViewModel = TestViewModel()
+    //json读取 begin
+    private val mTestReadViewModel = TestViewModel()
     private fun jsonRead() {
         binding.jsonRead.setOnClickListener {
             val database = Firebase.database
             database.getReference(testJsonDir).get().addOnSuccessListener {
                 Log.e("TAG", "jsonRead:" + it.value)
-                Toast.makeText(this, "${it.value}" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${it.value}", Toast.LENGTH_SHORT).show()
 
                 mTestReadViewModel.postsDataList.postValue(it.value as List<PostsData>)
             }
@@ -87,10 +96,11 @@ class WriteReadDelActivity : AppCompatActivity() {
             Log.e("TAG", "jsonRead:mTestReadViewModel.postsDataList: $it")
         })
     }
+    //json读取 end
 
 
     //json写入 jsonWrite() begin
-    lateinit var mJsonWriteList : ArrayList<PostsData>
+    lateinit var mJsonWriteList: ArrayList<PostsData>
     private fun jsonWrite() {
         val mTestViewModel = TestViewModel()
         binding.jsonWrite.setOnClickListener {
@@ -110,12 +120,4 @@ class WriteReadDelActivity : AppCompatActivity() {
         })
     }
     //json写入 jsonWrite() end
-
-
-
-}
-data class PostsData(val id: Int, val title: String)
-class TestViewModel : ViewModel() {
-    //专门对应json数据中的posts数据List
-    val postsDataList = MutableLiveData<List<PostsData>>()
 }
