@@ -40,6 +40,12 @@ class AuthenticationActivity : AppCompatActivity() {
             val password = binding.passEditText.text.toString()
             signIn(email = email, password = password)
         }
+
+        binding.CheckButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString()
+            checkIsNewUser(email = email)
+
+        }
     }
 
     override fun onStart() {
@@ -106,6 +112,24 @@ class AuthenticationActivity : AppCompatActivity() {
             binding.message.text = user.email + " success"
         } else {
             binding.message.text = " wrong"
+        }
+    }
+
+
+    private fun checkIsNewUser(email: String)  {
+
+        auth.fetchSignInMethodsForEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val isNewUser = task.result.signInMethods?.isEmpty()
+                    if (isNewUser == true){
+                        Toast.makeText(baseContext, "checkIsNewUser isNewUser", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(baseContext, "checkIsNewUser isNewUser no no no", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Log.e(TAG, "Error signing in with email link", task.exception)
+                }
         }
     }
 
