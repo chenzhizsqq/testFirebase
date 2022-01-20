@@ -29,7 +29,7 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
 
         binding.sendMail.setOnClickListener {
             val email = binding.emailEditText.text.toString()
-            sendSignInLink(email = email,actionCodeSettings =buildActionCodeSettings() )
+            sendSignInLink(email = email, actionCodeSettings = buildActionCodeSettings())
         }
 
         binding.checkMail.setOnClickListener {
@@ -42,7 +42,7 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
         }
     }
 
-    private fun buildActionCodeSettings() : ActionCodeSettings {
+    private fun buildActionCodeSettings(): ActionCodeSettings {
         // [START auth_build_action_code_settings]
         val actionCodeSettings = actionCodeSettings {
             // URL you want to redirect back to. The domain (www.example.com) for this
@@ -54,7 +54,8 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
             setAndroidPackageName(
                 "com.example.testfirebase",
                 true, /* installIfNotAvailable */
-                "12" /* minimumVersion */)
+                "12" /* minimumVersion */
+            )
         }
         // [END auth_build_action_code_settings]
         return actionCodeSettings
@@ -67,7 +68,7 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Log.e(TAG, "Email sent.")
                     Toast.makeText(baseContext, "Email sent.", Toast.LENGTH_SHORT).show()
-                }else{
+                } else {
                     Log.e(TAG, "sendSignInLink:failure", task.exception)
                 }
             }
@@ -91,7 +92,11 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.e(TAG, "Successfully signed in with email link!")
-                        Toast.makeText(baseContext, "Successfully signed in with email link!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            baseContext,
+                            "Successfully signed in with email link!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         val result = task.result
                         // You can access the new user via result.getUser()
                         // Additional user info profile *not* available via:
@@ -102,8 +107,7 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
                         Log.e(TAG, "Error signing in with email link", task.exception)
                     }
                 }
-        }else
-        {
+        } else {
             Toast.makeText(baseContext, "isSignInWithEmailLink Error ", Toast.LENGTH_SHORT).show()
             Log.e(TAG, "isSignInWithEmailLink Error")
 

@@ -116,21 +116,26 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
 
-    private fun checkIsNewUser(email: String)  {
+    private fun checkIsNewUser(email: String) {
 
         auth.fetchSignInMethodsForEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val isNewUser = task.result.signInMethods?.isEmpty()
-                    if (isNewUser == true){
-                        Toast.makeText(baseContext, "checkIsNewUser isNewUser", Toast.LENGTH_SHORT).show()
-                    }else{
-                        Toast.makeText(baseContext, "checkIsNewUser isNewUser no no no", Toast.LENGTH_SHORT).show()
+                    if (isNewUser == true) {
+                        Toast.makeText(baseContext, "checkIsNewUser isNewUser", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        Toast.makeText(
+                            baseContext,
+                            "checkIsNewUser isNewUser no no no",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
                     Log.e(TAG, "Error signing in with email link", task.exception)
                 }
-        }
+            }
     }
 
     companion object {
