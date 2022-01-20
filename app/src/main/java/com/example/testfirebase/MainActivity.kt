@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testfirebase.databinding.ActivityMainBinding
-import com.example.testfirebase.ui.AuthenticationActivity
-import com.example.testfirebase.ui.CloudMessagingActivity
-import com.example.testfirebase.ui.FirestoreCrudActivity
-import com.example.testfirebase.ui.WriteReadDelActivity
+import com.example.testfirebase.ui.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.CloudMessagingActivity.setOnClickListener(this)
         binding.FirestoreCrudActivity.setOnClickListener(this)
         binding.authentication.setOnClickListener(this)
+        binding.authenticationMailCheck.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -28,6 +26,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.authentication -> {
                 val intent =
                     Intent(this@MainActivity, AuthenticationActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.authenticationMailCheck -> {
+                val intent =
+                    Intent(this@MainActivity, AuthenticationMailCheckActivity::class.java)
                 startActivity(intent)
             }
             R.id.write_and_read -> {
