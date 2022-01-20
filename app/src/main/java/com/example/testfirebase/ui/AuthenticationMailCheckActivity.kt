@@ -1,5 +1,6 @@
 package com.example.testfirebase.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -9,6 +10,10 @@ import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.dynamiclinks.ktx.androidParameters
+import com.google.firebase.dynamiclinks.ktx.dynamicLink
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.dynamiclinks.ktx.iosParameters
 import com.google.firebase.ktx.Firebase
 
 class AuthenticationMailCheckActivity : AppCompatActivity() {
@@ -59,6 +64,22 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
         }
         // [END auth_build_action_code_settings]
         return actionCodeSettings
+    }
+
+
+    fun createDynamicLink_Basic() {
+        // [START create_link_basic]
+        val dynamicLink = Firebase.dynamicLinks.dynamicLink {
+            link = Uri.parse("https://www.example.com/")
+            domainUriPrefix = "https://chenzhitestweb.page.link"
+            // Open links with this app on Android
+            androidParameters { }
+            // Open links with com.example.ios on iOS
+            iosParameters("com.example.ios") { }
+        }
+
+        val dynamicLinkUri = dynamicLink.uri
+        // [END create_link_basic]
     }
 
     private fun sendSignInLink(email: String, actionCodeSettings: ActionCodeSettings) {
