@@ -20,7 +20,15 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:background="@drawable/back"
-            android:text="Authentication:身份验证用户登录" />
+            android:text="Authentication:简单的用户注册登录" />
+        <TextView
+            android:id="@+id/authenticationCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:text="Authentication:身份验证的用户注册登录" />
         <TextView
             android:id="@+id/write_and_read"
             android:layout_width="match_parent"
