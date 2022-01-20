@@ -37,11 +37,6 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
             sendSignInLink(email = email, actionCodeSettings = buildActionCodeSettings())
         }
 
-        binding.checkMail.setOnClickListener {
-            val email = binding.emailEditText.text.toString()
-            verifySignInLink(email = email)
-        }
-
         binding.txSignOut.setOnClickListener {
             signOut()
         }
@@ -94,46 +89,6 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
                 }
             }
         // [END auth_send_sign_in_link]
-    }
-
-    private fun verifySignInLink(email: String) {
-        // [START auth_verify_sign_in_link]
-        val auth = Firebase.auth
-        val intent = intent
-        val emailLink = intent.data.toString()
-
-        // Confirm the link is a sign-in with email link.
-        if (auth.isSignInWithEmailLink(emailLink)) {
-            // Retrieve this from wherever you stored it
-            //val email = "someemail@domain.com"
-            val email = email
-
-            // The client SDK will parse the code from the link for you.
-            auth.signInWithEmailLink(email, emailLink)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.e(TAG, "Successfully signed in with email link!")
-                        Toast.makeText(
-                            baseContext,
-                            "Successfully signed in with email link!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        val result = task.result
-                        // You can access the new user via result.getUser()
-                        // Additional user info profile *not* available via:
-                        // result.getAdditionalUserInfo().getProfile() == null
-                        // You can check if the user is new or existing:
-                        // result.getAdditionalUserInfo().isNewUser()
-                    } else {
-                        Log.e(TAG, "Error signing in with email link", task.exception)
-                    }
-                }
-        } else {
-            Toast.makeText(baseContext, "isSignInWithEmailLink Error ", Toast.LENGTH_SHORT).show()
-            Log.e(TAG, "isSignInWithEmailLink Error")
-
-        }
-        // [END auth_verify_sign_in_link]
     }
 
     private fun signOut() {
