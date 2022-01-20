@@ -68,7 +68,7 @@ dependencies {
     //身份验证
     implementation 'com.google.firebase:firebase-auth-ktx'
 
-    //邮件认证
+    //邮件认证或网络动态连接
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
 }
