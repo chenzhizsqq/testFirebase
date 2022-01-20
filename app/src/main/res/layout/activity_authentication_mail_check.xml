@@ -38,26 +38,6 @@ tools:context=".ui.AuthenticationMailCheckActivity">
             android:text=""
             tools:ignore="MissingConstraints" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:text="password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/passEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,17 +49,11 @@ tools:context=".ui.AuthenticationMailCheckActivity">
         android:orientation="horizontal">
 
         <Button
-            android:text="signup"
+            android:text="send mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:id="@+id/SignUpButton"/>
-        <Button
-            android:text="login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:id="@+id/LoginButton"/>
+            android:id="@+id/sendMail"/>
     </LinearLayout>
     <TextView
         android:id="@+id/message"
