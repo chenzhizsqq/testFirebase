@@ -59,7 +59,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
 
     //firebase-messaging 云端通知
-    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+
 
     // Firebase Core 就像SQL，对应着普通的文本数据
     implementation 'com.google.firebase:firebase-core:20.0.2'
@@ -75,3 +76,6 @@ dependencies {
     //简单方便的firebase-ui-auth登录
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 }
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'

@@ -7,6 +7,7 @@ import com.example.testfirebase.databinding.ActivityCloudMessagingBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
+
 class CloudMessagingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCloudMessagingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,5 +27,11 @@ class CloudMessagingActivity : AppCompatActivity() {
             // Log and toast
             Toast.makeText(baseContext, "msg_token_fmt", Toast.LENGTH_SHORT).show()
         })
+
+    }
+
+
+    companion object {
+        private const val TAG = "CloudMessagingActivity"
     }
 }
