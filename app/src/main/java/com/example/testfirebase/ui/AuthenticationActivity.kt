@@ -92,6 +92,13 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String) {
+        if (email.isEmpty() or password.isEmpty()){
+            Toast.makeText(
+                baseContext, "email.isEmpty() or password.isEmpty()",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
         // [START create_user_with_email]
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -114,6 +121,13 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     private fun signIn(email: String, password: String) {
+        if (email.isEmpty() or password.isEmpty()){
+            Toast.makeText(
+                baseContext, "email.isEmpty() or password.isEmpty()",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
         binding.message.text = ""
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
