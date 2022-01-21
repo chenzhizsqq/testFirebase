@@ -75,6 +75,10 @@ class AuthenticationActivity : AppCompatActivity() {
             isEmailVerified()
         }
 
+        binding.deleteUser.setOnClickListener {
+            deleteUser()
+        }
+
     }
 
     override fun onStart() {
@@ -255,6 +259,32 @@ class AuthenticationActivity : AppCompatActivity() {
         }
 
     }
+
+    //
+    private fun deleteUser() {
+        // [START delete_user]
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+
+        user.delete()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(baseContext, "delete yes", Toast.LENGTH_SHORT)
+                        .show()
+                    updateMessage("delete yes")
+                } else {
+                    Toast.makeText(baseContext, "delete no", Toast.LENGTH_SHORT)
+                        .show()
+                    updateMessage("delete no")
+                }
+            }
+        // [END delete_user]
+    }
+
 
     companion object {
         private const val TAG = "AuthenticationActivity"
