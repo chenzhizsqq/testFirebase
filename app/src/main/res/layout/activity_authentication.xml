@@ -89,6 +89,12 @@ tools:context=".ui.AuthenticationActivity">
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/LoginButton"/>
+        <Button
+            android:text="刷新"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/refresh"/>
     </LinearLayout>
 
     <LinearLayout

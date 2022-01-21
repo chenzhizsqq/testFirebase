@@ -54,6 +54,18 @@ tools:context=".ui.AuthFirebaseUIActivity">
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <Button
+        android:text="刷新"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/refresh"/>
+    <Button
+        android:text="退出帐号"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/signOut"/>
 
 </LinearLayout>
 

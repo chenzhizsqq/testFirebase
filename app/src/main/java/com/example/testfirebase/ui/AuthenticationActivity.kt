@@ -43,6 +43,10 @@ class AuthenticationActivity : AppCompatActivity() {
             signIn(email = email, password = password)
         }
 
+        binding.refresh.setOnClickListener {
+            refresh()
+        }
+
         binding.CheckButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             checkIsNewUser(email = email)
@@ -149,6 +153,22 @@ class AuthenticationActivity : AppCompatActivity() {
             }
 
         // [END sign_in_with_email]
+    }
+
+
+    //刷新
+    private fun refresh() {
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            binding.message.text = ""
+            binding.emailEditText.setText("")
+            return
+        }
+        binding.message.text = "refresh"
+        binding.emailEditText.setText(user.email)
+
     }
 
     private fun reload() {

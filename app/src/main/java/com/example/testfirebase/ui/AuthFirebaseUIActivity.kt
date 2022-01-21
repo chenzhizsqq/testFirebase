@@ -1,6 +1,8 @@
 package com.example.testfirebase.ui
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testfirebase.R
 import com.example.testfirebase.databinding.ActivityAuthFirebaseUiactivityBinding
@@ -8,9 +10,15 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class AuthFirebaseUIActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthFirebaseUiactivityBinding
+
+    // [START declare_auth]
+    private lateinit var auth: FirebaseAuth
+    // [END declare_auth]
 
     // [START auth_fui_create_launcher]
     // See: https://developer.android.com/training/basics/intents/result
@@ -26,7 +34,35 @@ class AuthFirebaseUIActivity : AppCompatActivity() {
         binding = ActivityAuthFirebaseUiactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+        // [END initialize_auth]
+
         createSignInIntent()
+
+        binding.signOut.setOnClickListener {
+            signOut()
+        }
+
+        binding.refresh.setOnClickListener {
+            refresh()
+        }
+    }
+
+
+    //刷新
+    private fun refresh() {
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            binding.email.text = ""
+            binding.displayName.text = ""
+            return
+        }
+        binding.email.text = user.email
+        binding.displayName.text = user.displayName
+
     }
 
 
@@ -75,6 +111,24 @@ class AuthFirebaseUIActivity : AppCompatActivity() {
         }
     }
     // [END auth_fui_result]
+
+    private fun signOut() {
+        // [START auth_fui_signout]
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.e(TAG, "signOut ok")
+                    Toast.makeText(this, "signOut ok", Toast.LENGTH_SHORT).show()
+                    refresh()
+                } else {
+                    Log.e(TAG, "signOut no")
+                    Toast.makeText(this, "signOut no", Toast.LENGTH_SHORT).show()
+                    refresh()
+                }
+            }
+        // [END auth_fui_signout]
+    }
 
     companion object {
         private const val TAG = "AuthFirebaseUIActivity"
