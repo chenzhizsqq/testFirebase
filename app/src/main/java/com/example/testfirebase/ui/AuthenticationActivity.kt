@@ -92,7 +92,7 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     private fun createAccount(email: String, password: String) {
-        if (email.isEmpty() or password.isEmpty()){
+        if (email.isEmpty() or password.isEmpty()) {
             Toast.makeText(
                 baseContext, "email.isEmpty() or password.isEmpty()",
                 Toast.LENGTH_SHORT
@@ -121,7 +121,7 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     private fun signIn(email: String, password: String) {
-        if (email.isEmpty() or password.isEmpty()){
+        if (email.isEmpty() or password.isEmpty()) {
             Toast.makeText(
                 baseContext, "email.isEmpty() or password.isEmpty()",
                 Toast.LENGTH_SHORT

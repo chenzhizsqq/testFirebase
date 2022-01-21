@@ -12,16 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFirebase">
         <activity
+            android:name=".ui.AuthFirebaseUIActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.AuthenticationMailCheckActivity"
-            android:exported="true" >
+            android:exported="true">
+
             <!-- [START link_intent_filter] -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="example.com"
-                    android:scheme="https"/>
+                    android:scheme="https" />
             </intent-filter>
             <!-- [END link_intent_filter] -->
         </activity>

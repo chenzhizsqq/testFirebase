@@ -71,4 +71,7 @@ dependencies {
     //邮件认证或网络动态连接
     implementation 'com.google.android.gms:play-services-auth:20.0.1'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+
+    //简单方便的firebase-ui-auth登录
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 }

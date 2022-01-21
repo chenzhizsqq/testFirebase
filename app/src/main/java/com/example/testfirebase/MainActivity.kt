@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.FirestoreCrudActivity.setOnClickListener(this)
         binding.authentication.setOnClickListener(this)
         binding.authenticationMailCheck.setOnClickListener(this)
+        binding.AuthFirebaseUIActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.authenticationMailCheck -> {
                 val intent =
                     Intent(this@MainActivity, AuthenticationMailCheckActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.AuthFirebaseUIActivity -> {
+                val intent =
+                    Intent(this@MainActivity, AuthFirebaseUIActivity::class.java)
                 startActivity(intent)
             }
             R.id.write_and_read -> {
