@@ -47,6 +47,10 @@ class AuthFirebaseUIActivity : AppCompatActivity() {
         binding.refresh.setOnClickListener {
             refresh()
         }
+
+        binding.delete.setOnClickListener {
+            delete()
+        }
     }
 
 
@@ -128,6 +132,32 @@ class AuthFirebaseUIActivity : AppCompatActivity() {
                 }
             }
         // [END auth_fui_signout]
+    }
+
+    private fun delete() {
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+
+        // [START auth_fui_delete]
+        AuthUI.getInstance()
+            .delete(this)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(baseContext, "delete yes", Toast.LENGTH_SHORT)
+                        .show()
+                    refresh()
+                } else {
+                    Toast.makeText(baseContext, "delete no", Toast.LENGTH_SHORT)
+                        .show()
+                    refresh()
+                }
+            }
+        // [END auth_fui_delete]
+
     }
 
     companion object {

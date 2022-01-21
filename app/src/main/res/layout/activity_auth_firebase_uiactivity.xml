@@ -66,6 +66,12 @@ tools:context=".ui.AuthFirebaseUIActivity">
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/signOut"/>
+    <Button
+        android:text="删除帐号"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/delete"/>
 
 </LinearLayout>
 
