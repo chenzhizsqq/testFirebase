@@ -20,7 +20,7 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:background="@drawable/back"
-            android:text="Authentication:简单的用户注册登录" />
+            android:text="Authentication:注册前，不用验证。用户注册管理（注册后，可以再发邮件验证）" />
         <TextView
             android:id="@+id/authenticationMailCheck"
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:background="@drawable/back"
-            android:text="Authentication:邮件验证的用户注册登录（暂时还没有成功）" />
+            android:text="Authentication:注册前，要邮件验证。用户注册登录（暂时还没有成功）" />
         <TextView
             android:id="@+id/write_and_read"
             android:layout_width="match_parent"
