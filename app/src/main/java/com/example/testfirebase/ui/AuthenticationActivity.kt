@@ -1,10 +1,12 @@
 package com.example.testfirebase.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testfirebase.MainActivity
 import com.example.testfirebase.databinding.ActivityAuthenticationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -44,8 +46,35 @@ class AuthenticationActivity : AppCompatActivity() {
         binding.CheckButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             checkIsNewUser(email = email)
-
         }
+
+        binding.updatePassword.setOnClickListener {
+            val password = binding.passEditText.text.toString()
+            updatePassword(password)
+        }
+
+        binding.signOut.setOnClickListener {
+            auth.signOut()
+            Log.e(TAG, "signOut")
+            val intent =
+                Intent(this@AuthenticationActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.sendPasswordReset.setOnClickListener {
+            val emailLabel = binding.emailLabel.text.toString()
+            sendPasswordReset(emailLabel)
+        }
+
+        binding.sendEmailVerification.setOnClickListener {
+            sendEmailVerification()
+        }
+
+        binding.isEmailVerified.setOnClickListener {
+            isEmailVerified()
+        }
+
     }
 
     override fun onStart() {
@@ -81,6 +110,7 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     private fun signIn(email: String, password: String) {
+        binding.message.text = ""
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -99,6 +129,7 @@ class AuthenticationActivity : AppCompatActivity() {
                     updateUI(null)
                 }
             }
+
         // [END sign_in_with_email]
     }
 
@@ -113,6 +144,10 @@ class AuthenticationActivity : AppCompatActivity() {
         } else {
             binding.message.text = " wrong"
         }
+    }
+
+    private fun updateMessage(message: String) {
+        binding.message.text = message
     }
 
 
@@ -136,6 +171,89 @@ class AuthenticationActivity : AppCompatActivity() {
                     Log.e(TAG, "Error signing in with email link", task.exception)
                 }
             }
+    }
+
+    //在登录的情况下。重设密码
+    private fun updatePassword(newPassword: String) {
+        // [START update_password]
+        val user = Firebase.auth.currentUser
+
+        user?.updatePassword(newPassword)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.e(TAG, "User password updated.")
+                    Toast.makeText(baseContext, "User password updated.", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(baseContext, "User password updated. error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+    }
+
+    //密码忘记，在没有登录的情况下，要求重设密码。(等一下会发送到注册的邮件中)
+    private fun sendPasswordReset(emailAddress: String) {
+        // [START send_password_reset]
+        //val emailAddress = "user@example.com"
+
+        Firebase.auth.sendPasswordResetEmail(emailAddress)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.e(TAG, "Email sent.")
+                    Toast.makeText(baseContext, "Email sent.", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Log.e(TAG, "sendPasswordReset error")
+                    Toast.makeText(baseContext, "sendPasswordReset error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        // [END send_password_reset]
+    }
+
+    //对当前用户，发送邮件验证
+    private fun sendEmailVerification() {
+        // [START send_email_verification]
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+
+        user.sendEmailVerification()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.e(TAG, "Email sent.")
+                    Toast.makeText(baseContext, "Email sent.", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Log.e(TAG, "sendEmailVerification error")
+                    Toast.makeText(baseContext, "sendEmailVerification error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        // [END send_email_verification]
+    }
+
+    //对当前用户，确定邮件验证是否成功
+    private fun isEmailVerified() {
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            Toast.makeText(baseContext, "user == null", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+        if (user.isEmailVerified) {
+            Toast.makeText(baseContext, "isEmailVerified yes", Toast.LENGTH_SHORT)
+                .show()
+            updateMessage("isEmailVerified yes")
+        } else {
+            Toast.makeText(baseContext, "isEmailVerified no", Toast.LENGTH_SHORT)
+                .show()
+            updateMessage("isEmailVerified no")
+        }
+
     }
 
     companion object {

@@ -29,14 +29,15 @@ tools:context=".ui.AuthenticationActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emailLabel"/>
+
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
             android:ems="10"
+            android:inputType="textEmailAddress"
             android:text=""
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,14 +51,22 @@ tools:context=".ui.AuthenticationActivity">
             android:text="password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <EditText
             android:id="@+id/passEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:ems="10"
-            tools:ignore="MissingConstraints" />
+            android:inputType="textPassword"
+            tools:ignore="MissingConstraints,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textAlignment="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,18 +89,55 @@ tools:context=".ui.AuthenticationActivity">
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/LoginButton"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
         <Button
-            android:text="check"
+            android:text="检查是否新的注册用户"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/CheckButton"/>
+        <Button
+            android:text="sign out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/signOut"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="match_parent"
+
+    <Button
+        android:text="在登录的情况下。重设密码"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"/>
+        android:layout_margin="10dp"
+        android:id="@+id/updatePassword"/>
+    <Button
+        android:text="在没有登录的情况下，要求重设密码。(等一下会发送到注册的邮件中)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/sendPasswordReset"/>
+
+    <Button
+        android:text="send Email 对当前已注册的用户，发送邮件验证"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/sendEmailVerification"/>
+    <Button
+        android:text="send Email 对当前已注册的用户，确定邮件验证是否成功"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/isEmailVerified"/>
 
 
 </LinearLayout>

@@ -29,14 +29,15 @@ tools:context=".ui.AuthenticationMailCheckActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/emailLabel"/>
+
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
             android:ems="10"
+            android:inputType="textEmailAddress"
             android:text=""
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
