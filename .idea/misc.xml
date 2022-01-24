@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/back.xml" value="0.12407407407407407" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/circle.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/ic_add.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/ic_add_big.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_analytics.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_auth_firebase_uiactivity.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_authentication.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/testFirebase/app/src/main/res/layout/activity_authentication_mail_check.xml" value="0.1" />

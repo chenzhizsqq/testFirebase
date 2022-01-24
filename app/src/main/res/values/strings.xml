@@ -25,4 +25,13 @@
     <!-- [END fcm_default_icon_string] -->
     <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
     <string name="fcm_message">FCM Message</string>
+
+    <!-- [START activity_analytics test] -->
+    <string name="food_dialog_title">Which food is your favorite?</string>
+    <array name="food_items">
+        <item>Hot Dogs</item>
+        <item>Hamburgers</item>
+        <item>Pizza</item>
+    </array>
+    <!-- [END activity_analytics test] -->
 </resources>

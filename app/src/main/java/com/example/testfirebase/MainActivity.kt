@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.authenticationMailCheck.setOnClickListener(this)
         binding.AuthFirebaseUIActivity.setOnClickListener(this)
         binding.GetTokenActivity.setOnClickListener(this)
+        binding.AnalyticsActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -52,6 +53,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.GetTokenActivity -> {
                 val intent =
                     Intent(this@MainActivity, GetTokenActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.AnalyticsActivity -> {
+                val intent =
+                    Intent(this@MainActivity, AnalyticsActivity::class.java)
                 startActivity(intent)
             }
         }
