@@ -28,7 +28,7 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:background="@drawable/back"
-            android:text="Authentication:注册前，要邮件验证。用户注册登录（暂时还没有成功）" />
+            android:text="Authentication:不用密码的邮件注册。用户注册登录（暂时还没有完成）" />
         <TextView
             android:id="@+id/AuthFirebaseUIActivity"
             android:layout_width="match_parent"

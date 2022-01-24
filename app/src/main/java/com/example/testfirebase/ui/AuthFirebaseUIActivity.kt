@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+//https://firebase.google.com/docs/auth/android/firebaseui?authuser=0
 class AuthFirebaseUIActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthFirebaseUiactivityBinding
 

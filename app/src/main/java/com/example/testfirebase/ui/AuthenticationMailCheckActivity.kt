@@ -16,6 +16,7 @@ import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.dynamiclinks.ktx.iosParameters
 import com.google.firebase.ktx.Firebase
 
+//不用密码的邮件注册，暂时还没有完成
 class AuthenticationMailCheckActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthenticationMailCheckBinding
 
