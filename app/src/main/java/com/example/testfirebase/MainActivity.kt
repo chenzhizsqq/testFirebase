@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         binding.writeAndRead.setOnClickListener(this)
-        binding.CloudMessagingActivity.setOnClickListener(this)
         binding.FirestoreCrudActivity.setOnClickListener(this)
         binding.authentication.setOnClickListener(this)
         binding.authenticationMailCheck.setOnClickListener(this)
         binding.AuthFirebaseUIActivity.setOnClickListener(this)
+        binding.GetTokenActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     Intent(this@MainActivity, FirestoreCrudActivity::class.java)
                 startActivity(intent)
             }
-            R.id.CloudMessagingActivity -> {
+            R.id.GetTokenActivity -> {
                 val intent =
-                    Intent(this@MainActivity, CloudMessagingActivity::class.java)
+                    Intent(this@MainActivity, GetTokenActivity::class.java)
                 startActivity(intent)
             }
         }
