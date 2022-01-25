@@ -19,6 +19,31 @@ tools:context=".ui.CloudStorageActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cloud Storage：共享用户生成的内容（如图片和视频）" />
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:background="@color/teal_700"
+        android:id="@+id/image"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear"
+        android:text="清空图片"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/full_load"
+        android:text="完整示例"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/http_url"
+        android:text="http url 下载路径"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_pic"
+        android:text="删除文件"/>
 
 
 
