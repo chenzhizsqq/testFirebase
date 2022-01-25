@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFirebase">
         <activity
+            android:name=".ui.CloudStorageActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.AnalyticsActivity"
             android:exported="true" />
         <activity

@@ -69,6 +69,15 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Analytics（分析）：Firestore免费的数据分析" />
+        <TextView
+            android:id="@+id/CloudStorageActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:text="Cloud Storage：共享用户生成的内容（如图片和视频）" />
+
 
 
 

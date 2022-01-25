@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AuthFirebaseUIActivity.setOnClickListener(this)
         binding.GetTokenActivity.setOnClickListener(this)
         binding.AnalyticsActivity.setOnClickListener(this)
+        binding.CloudStorageActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.AnalyticsActivity -> {
                 val intent =
                     Intent(this@MainActivity, AnalyticsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.CloudStorageActivity -> {
+                val intent =
+                    Intent(this@MainActivity, CloudStorageActivity::class.java)
                 startActivity(intent)
             }
         }

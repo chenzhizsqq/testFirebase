@@ -76,8 +76,12 @@ dependencies {
     //简单方便的firebase-ui-auth登录
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 
-
+    //android的本机的APP属性存储控制
     implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //firebase firestore云空间
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
 }
 
 // ADD THIS AT THE BOTTOM
