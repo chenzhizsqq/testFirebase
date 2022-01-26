@@ -1,6 +1,15 @@
 package com.example.testfirebase.ui
 
+import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.os.Environment.getExternalStoragePublicDirectory
+import android.provider.Settings
+import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +19,12 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CloudStorageActivity : AppCompatActivity() {
@@ -56,6 +70,99 @@ class CloudStorageActivity : AppCompatActivity() {
         binding.deletePic.setOnClickListener {
             imageView.setImageBitmap(null)
             includesForDeleteFiles()
+        }
+        binding.testFilePath.setOnClickListener {
+            testFilePath()
+        }
+
+        binding.upload.setOnClickListener {
+            imageView.setImageBitmap(null)
+            UploadTask()
+        }
+
+        //本程序需要您同意允许访问所有文件权限
+        fileScopedStorageCheck()
+    }
+
+    //测试文件的路径
+    private fun testFilePath() {
+        val getFilesDir = filesDir
+        Log.e(TAG, "getFilesDir: " + getFilesDir)
+        ///data/user/0/com.example.testfirebase/files
+
+        val getCacheDir = cacheDir
+        Log.e(TAG, "getCacheDir: " + getCacheDir)
+        ///data/user/0/com.example.testfirebase/cache
+
+        val getExternalStoragePublicDirectory = getExternalStoragePublicDirectory("DCIM")
+        Log.e(TAG, "getExternalStoragePublicDirectory: " + getExternalStoragePublicDirectory)
+        ///storage/emulated/0/DCIM
+
+        val mDIRECTORY_DCIM = applicationContext.getExternalFilesDir(Environment.DIRECTORY_DCIM)
+        Log.e(TAG, "mDIRECTORY_DCIM: " + mDIRECTORY_DCIM)
+        ////storage/emulated/0/Android/data/com.example.testfirebase/files/DCIM
+
+
+        val testFilePath: String =
+            getExternalStoragePublicDirectory.toString() + "/" + "upload_test.png"
+        Log.e(TAG, "testFilePath: " + testFilePath)
+        //testFilePath: /storage/emulated/0/DCIM/upload_test.png
+
+        val file = File(testFilePath)
+
+        //最后验证是否有这个文件
+        val isFile = file.isFile
+        Log.e(TAG, "isFile: " + isFile)
+        //isFile: true
+    }
+
+    //允许访问所有文件权限的检测
+    private fun fileScopedStorageCheck() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R ||
+            Environment.isExternalStorageManager()
+        ) {
+            Toast.makeText(this, "已获得访问所有文件权限", Toast.LENGTH_SHORT).show()
+        } else {
+            val builder = AlertDialog.Builder(this)
+                .setMessage("本程序需要您同意允许访问所有文件权限")
+                .setPositiveButton("确定") { _, _ ->
+                    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                    startActivity(intent)
+                }
+            builder.show()
+        }
+    }
+
+    //https://logicalerror.seesaa.net/article/443110283.html
+    private fun UploadTask() {
+// View から Bitmap 取得
+        val view: View = binding.root // 画面全体
+        view.isDrawingCacheEnabled = true
+        val cache: Bitmap = view.drawingCache
+        val rootViewCapture = Bitmap.createBitmap(cache)
+        view.isDrawingCacheEnabled = false
+
+// 画像アップロード用パス決定
+        val cal: Calendar = Calendar.getInstance()
+        val sf = SimpleDateFormat("yyyyMMdd_HHmmss")
+        val uploadImagePath =
+            java.lang.String.format("images/%s.png", sf.format(cal.time))
+        val imageRef = storageRef.child(uploadImagePath)
+
+// byte[] に変換
+        val baos = ByteArrayOutputStream()
+        rootViewCapture.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        val data = baos.toByteArray()
+
+        val uploadTask: UploadTask = imageRef.putBytes(data)
+
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+            Toast.makeText(this, "上传不成功", Toast.LENGTH_SHORT).show()
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+            Toast.makeText(this, "上传成功", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -118,4 +225,7 @@ class CloudStorageActivity : AppCompatActivity() {
         // [END storage_custom_app]
     }
 
+    companion object {
+        private const val TAG = "CloudStorageActivity"
+    }
 }
