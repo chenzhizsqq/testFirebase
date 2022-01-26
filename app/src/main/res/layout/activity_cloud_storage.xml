@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/delete_pic"
-            android:text="删除文件" />
+            android:text="删除文件，并添加错误的Listener" />
 
         <Button
             android:layout_width="wrap_content"

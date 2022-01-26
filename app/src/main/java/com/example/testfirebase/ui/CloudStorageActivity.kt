@@ -15,9 +15,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.testfirebase.databinding.ActivityCloudStorageBinding
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
@@ -95,6 +97,19 @@ class CloudStorageActivity : AppCompatActivity() {
 
         //本程序需要您同意允许访问所有文件权限
         fileScopedStorageCheck()
+    }
+
+    //错误的Listener   https://firebase.google.com/docs/storage/android/handle-errors
+    internal inner class MyFailureListener : OnFailureListener {
+        override fun onFailure(exception: Exception) {
+            val errorCode = (exception as StorageException).errorCode
+            val errorMessage = exception.message
+            // test the errorCode and errorMessage, and handle accordingly
+
+            Log.e(TAG, "onFailure: $errorCode:$errorMessage")
+            Toast.makeText(baseContext, "onFailure: $errorCode:$errorMessage", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 
@@ -282,14 +297,13 @@ class CloudStorageActivity : AppCompatActivity() {
         // Create a reference to the file to delete
         val desertRef = storageRef.child("images/test2.png")
 
+        val mMyFailureListener = MyFailureListener()
+
         // Delete the file
         desertRef.delete().addOnSuccessListener {
             // File deleted successfully
             Toast.makeText(this, "delete().addOnSuccessListener true", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            // Uh-oh, an error occurred!
-            Toast.makeText(this, "delete().addOnSuccessListener false", Toast.LENGTH_SHORT).show()
-        }
+        }.addOnFailureListener(mMyFailureListener)
         // [END delete_file]
     }
 
