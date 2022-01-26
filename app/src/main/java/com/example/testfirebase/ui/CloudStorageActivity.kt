@@ -95,8 +95,31 @@ class CloudStorageActivity : AppCompatActivity() {
             editFileMetadata()
         }
 
+        binding.getParentRoot.setOnClickListener {
+            getParentRoot()
+        }
+
         //本程序需要您同意允许访问所有文件权限
         fileScopedStorageCheck()
+    }
+
+    //https://firebase.google.com/docs/storage/android/create-reference#navigate_with_references
+    private fun getParentRoot() {
+        // parent allows us to move our reference to a parent node
+        val parentRef = storageRef.parent
+
+        // root allows us to move all the way back to the top of our bucket
+        // rootRef now points to the root
+        val rootRef = storageRef.root
+
+        Log.e(
+            TAG, "getParentRoot: parentRef:" + parentRef.toString()
+                    + " rootRef:" + rootRef.toString()
+        )
+        Toast.makeText(
+            baseContext, "getParentRoot: parentRef:" + parentRef.toString()
+                    + " rootRef:" + rootRef.toString(), Toast.LENGTH_SHORT
+        ).show()
     }
 
     //错误的Listener   https://firebase.google.com/docs/storage/android/handle-errors

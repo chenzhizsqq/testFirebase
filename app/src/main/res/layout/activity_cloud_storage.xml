@@ -82,6 +82,12 @@
             android:id="@+id/editFileMetadata"
             android:text="修改文件的文件元数据的个人属性" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/getParentRoot"
+            android:text="获取根目录和父目录" />
+
 
     </LinearLayout>
 
