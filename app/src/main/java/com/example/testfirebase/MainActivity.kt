@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GetTokenActivity.setOnClickListener(this)
         binding.AnalyticsActivity.setOnClickListener(this)
         binding.CloudStorageActivity.setOnClickListener(this)
+        binding.RemoteConfigActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -65,6 +66,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent =
                     Intent(this@MainActivity, CloudStorageActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.RemoteConfigActivity -> {
+                val intent =
+                    Intent(this@MainActivity, RemoteConfigActivity::class.java)
+                startActivity(intent)
+
             }
         }
     }

@@ -13,6 +13,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/authentication"
             android:layout_width="match_parent"
@@ -21,6 +22,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Authentication:注册前，不用验证。用户注册管理（注册后，可以再发邮件验证）" />
+
         <TextView
             android:id="@+id/authenticationMailCheck"
             android:layout_width="match_parent"
@@ -29,6 +31,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Authentication:不用密码的邮件注册。用户注册登录（暂时还没有完成）" />
+
         <TextView
             android:id="@+id/AuthFirebaseUIActivity"
             android:layout_width="match_parent"
@@ -37,6 +40,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="FirebaseUI:简单的用户管理器" />
+
         <TextView
             android:id="@+id/write_and_read"
             android:layout_width="match_parent"
@@ -45,6 +49,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Realtime Database 简单的读、写、删除:常用在存储json数据" />
+
         <TextView
             android:id="@+id/FirestoreCrudActivity"
             android:layout_width="match_parent"
@@ -53,6 +58,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Firestore 简单的读、写、删除:相当于SQL处理的数据" />
+
         <TextView
             android:id="@+id/GetTokenActivity"
             android:layout_width="match_parent"
@@ -61,6 +67,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="获取测试用的Token" />
+
         <TextView
             android:id="@+id/AnalyticsActivity"
             android:layout_width="match_parent"
@@ -69,6 +76,7 @@
             android:textSize="20sp"
             android:background="@drawable/back"
             android:text="Analytics（分析）：Firestore免费的数据分析" />
+
         <TextView
             android:id="@+id/CloudStorageActivity"
             android:layout_width="match_parent"
@@ -78,8 +86,14 @@
             android:background="@drawable/back"
             android:text="Cloud Storage：共享用户生成的内容（如图片和视频）" />
 
-
-
+        <TextView
+            android:id="@+id/RemoteConfigActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:background="@drawable/back"
+            android:text="不用更新APP，Firebase 远程配置APP的设置" />
 
 
     </LinearLayout>
