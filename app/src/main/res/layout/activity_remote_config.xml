@@ -28,6 +28,19 @@
             android:src="@drawable/ic_launcher_foreground"
             android:id="@+id/image" />
 
+        <TextView
+            android:id="@+id/welcomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="welcomeTextView" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fetchButton"
+            android:text="fetchButton" />
+
 
     </LinearLayout>
 
