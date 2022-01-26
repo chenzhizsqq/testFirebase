@@ -22,8 +22,8 @@
             android:text="Cloud Storage：共享用户生成的内容（如图片和视频）" />
 
         <ImageView
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:background="@color/teal_700"
             android:src="@drawable/ic_launcher_foreground"
             android:id="@+id/image" />
@@ -63,6 +63,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/testFilePath"
             android:text="测试文件的路径" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listAllFiles"
+            android:text="列出当前文件夹的全部文件" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/includesForFileMetadata"
+            android:text="获取文件的文件元数据属性" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editFileMetadata"
+            android:text="修改文件的文件元数据的个人属性" />
 
 
     </LinearLayout>

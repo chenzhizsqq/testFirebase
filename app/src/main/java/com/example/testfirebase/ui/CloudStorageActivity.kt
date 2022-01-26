@@ -21,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
+import com.google.firebase.storage.ktx.storageMetadata
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
@@ -80,8 +81,96 @@ class CloudStorageActivity : AppCompatActivity() {
             UploadTask()
         }
 
+        binding.listAllFiles.setOnClickListener {
+            listAllFiles()
+        }
+
+        binding.includesForFileMetadata.setOnClickListener {
+            includesForFileMetadata()
+        }
+
+        binding.editFileMetadata.setOnClickListener {
+            editFileMetadata()
+        }
+
         //本程序需要您同意允许访问所有文件权限
         fileScopedStorageCheck()
+    }
+
+
+    //https://firebase.google.com/docs/storage/android/file-metadata#file_metadata_properties
+    private fun includesForFileMetadata() {
+
+        // Get reference to the file
+        val forestRef = storageRef.child("test.txt")
+        // [END metadata_get_storage_reference]
+
+        // [START get_file_metadata]
+        forestRef.metadata.addOnSuccessListener { metadata ->
+            // Metadata now contains the metadata for 'images/forest.jpg'
+            Log.e(TAG, "includesForFileMetadata: ${metadata.name}")
+            Toast.makeText(this, "Success ${metadata.name}", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+            Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    //https://firebase.google.com/docs/storage/android/file-metadata#file_metadata_properties
+    private fun editFileMetadata() {
+
+        // Get reference to the file
+        val forestRef = storageRef.child("test.txt")
+        // [END metadata_get_storage_reference]
+
+        // Create file metadata including the content type
+        val metadata = storageMetadata {
+            setCustomMetadata("name", "test-ok.txt")
+        }
+
+
+        // Update metadata properties
+        forestRef.updateMetadata(metadata).addOnSuccessListener { updatedMetadata ->
+            // Updated metadata is in updatedMetadata
+
+            Log.e(TAG, "editFileMetadata: ${updatedMetadata.getCustomMetadata("name")}")
+            Toast.makeText(
+                this,
+                "Success ${updatedMetadata.getCustomMetadata("name")}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }.addOnFailureListener {
+            // Uh-oh, an error occurred!
+            Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+
+    //https://github.com/firebase/snippets-android/blob/8184cba2c40842a180f91dcfb4a216e721cc6ae6/storage/app/src/main/java/com/google/firebase/referencecode/storage/kotlin/StorageActivity.kt#L436-L454
+    private fun listAllFiles() {
+
+        //如果要获取根目录，就是直接用storageRef，就可以了
+        //val listRef = storageRef
+
+        // [START storage_list_all]
+        val listRef = storageRef.child("images")
+
+        // You'll need to import com.google.firebase.storage.ktx.component1 and
+        // com.google.firebase.storage.ktx.component2
+        listRef.listAll()
+            .addOnSuccessListener {
+                val size = it.items.size
+                for (i in 0 until size) {
+                    Log.e(TAG, "listAllFiles $i: " + it.items[i].toString())
+                }
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                // Uh-oh, an error occurred!
+                Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show()
+            }
+        // [END storage_list_all]
     }
 
     //测试文件的路径
