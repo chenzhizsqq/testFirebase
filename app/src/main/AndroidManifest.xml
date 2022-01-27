@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestFirebase">
         <activity
+            android:name=".ui.AdmobActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.RemoteConfigActivity"
             android:exported="true" />
 
@@ -62,6 +65,11 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
+        <!-- [START 广告设置] -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1355246812253414~3731583646" />
+        <!-- [END 广告设置] -->
         <activity
             android:name=".ui.AuthFirebaseUIActivity"
             android:exported="true" />

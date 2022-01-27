@@ -90,6 +90,9 @@ dependencies {
     // 不用更新APP，Firebase 远程配置APP的设置
     implementation 'com.google.firebase:firebase-config-ktx'
 
+    // 添加并初始化移动广告 SDK
+    implementation 'com.google.android.gms:play-services-ads:20.5.0'
+
     //Glide图片处理：第三方插件
     kapt 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.github.bumptech.glide:glide:4.10.0'

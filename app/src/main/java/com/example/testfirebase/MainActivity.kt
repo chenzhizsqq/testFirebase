@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AnalyticsActivity.setOnClickListener(this)
         binding.CloudStorageActivity.setOnClickListener(this)
         binding.RemoteConfigActivity.setOnClickListener(this)
+        binding.AdmobActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -71,8 +72,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent =
                     Intent(this@MainActivity, RemoteConfigActivity::class.java)
                 startActivity(intent)
-
             }
+            R.id.AdmobActivity -> {
+                val intent =
+                    Intent(this@MainActivity, AdmobActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 }
