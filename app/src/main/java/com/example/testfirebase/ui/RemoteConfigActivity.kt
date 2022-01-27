@@ -30,8 +30,8 @@ class RemoteConfigActivity : AppCompatActivity() {
         // 设置刷新后台属性的频率
         // [START enable_dev_mode]
         val configSettings = remoteConfigSettings {
-            fetchTimeoutInSeconds = 60            //读取数据的时间超过指定的超时时间
-            minimumFetchIntervalInSeconds = 60    //设置最小提取间隔以实现频繁刷新：
+            fetchTimeoutInSeconds = 3600            //读取数据的时间超过指定的超时时间
+            minimumFetchIntervalInSeconds = 3600    //设置最小提取间隔以实现频繁刷新：
         }
         remoteConfig.setConfigSettingsAsync(configSettings)
         // [END enable_dev_mode]
@@ -49,6 +49,30 @@ class RemoteConfigActivity : AppCompatActivity() {
 
         binding.testRandom.setOnClickListener { testRandom() }
 
+        binding.testJson.setOnClickListener { testJson() }
+
+    }
+
+    private fun testJson() {
+        // [START fetch_config_with_callback]
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val updated = task.result               //是否后台有最新的更新
+                    Log.e(TAG, "Config params updated: $updated")
+
+                    //在后台获取最新的数值
+                    val testJson = remoteConfig.getString("testJson")
+                    logToast("testJson:$testJson")
+                    binding.welcomeTextView.text = testJson.toString()
+                } else {
+                    Toast.makeText(
+                        this, "Fetch failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        // [END fetch_config_with_callback]
     }
 
     //搭配服务器的条件值，就会获取对应的值。是按照服务器的条件，而不是按照当前APP的条件。

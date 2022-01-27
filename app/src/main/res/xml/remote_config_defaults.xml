@@ -20,6 +20,10 @@
         <key>testRandom</key>
         <value>0</value>
     </entry>
+    <entry>
+        <key>testJson</key>
+        <value></value>
+    </entry>
 
 
 </defaultsMap><!-- END xml_defaults -->
