@@ -53,6 +53,12 @@
             android:id="@+id/testServerConfigDef"
             android:text="没有联络后台的情况下，获取最后的值" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testRandom"
+            android:text="搭配服务器的条件值，就会获取对应的值。" />
+
 
     </LinearLayout>
 

@@ -16,5 +16,10 @@
         <key>testName</key>
         <value>testName default 's value</value>
     </entry>
+    <entry>
+        <key>testRandom</key>
+        <value>0</value>
+    </entry>
+
 
 </defaultsMap><!-- END xml_defaults -->

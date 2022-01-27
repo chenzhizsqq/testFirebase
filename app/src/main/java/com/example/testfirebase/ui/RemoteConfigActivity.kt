@@ -46,7 +46,36 @@ class RemoteConfigActivity : AppCompatActivity() {
         binding.testServerConfigCtr.setOnClickListener { testServerConfigCtr() }
 
         binding.testServerConfigDef.setOnClickListener { testServerConfigDef() }
+
+        binding.testRandom.setOnClickListener { testRandom() }
+
     }
+
+    //搭配服务器的条件值，就会获取对应的值。是按照服务器的条件，而不是按照当前APP的条件。
+    //例如：随机百分之50，一旦当前用户是false，就会一直都会false。再取值，也是一样的结果。
+    private fun testRandom() {
+
+        // [START fetch_config_with_callback]
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val updated = task.result               //是否后台有最新的更新
+                    Log.e(TAG, "Config params updated: $updated")
+
+                    //在后台获取最新的数值
+                    val testRandom = remoteConfig.getDouble("testRandom")
+                    logToast("testRandom:$testRandom")
+                    binding.welcomeTextView.text = testRandom.toString()
+                } else {
+                    Toast.makeText(
+                        this, "Fetch failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        // [END fetch_config_with_callback]
+    }
+
 
     //测试关于后台“配置”后，获取的服务器最新数值
     private fun testServerConfigCtr() {
