@@ -44,18 +44,47 @@ class RemoteConfigActivity : AppCompatActivity() {
         binding.fetchButton.setOnClickListener { fetchWelcome() }
 
         binding.testServerConfigCtr.setOnClickListener { testServerConfigCtr() }
+
+        binding.testServerConfigDef.setOnClickListener { testServerConfigDef() }
     }
 
-    //测试关于后台“配置”后，获取的数值
+    //测试关于后台“配置”后，获取的服务器最新数值
     private fun testServerConfigCtr() {
+
+        // [START fetch_config_with_callback]
+        remoteConfig.fetchAndActivate()
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val updated = task.result               //是否后台有最新的更新
+                    Log.e(TAG, "Config params updated: $updated")
+
+                    //在后台获取最新的数值
+                    val testName = remoteConfig.getString("testName")
+                    logToast("testServerConfigCtr:$testName")
+                    binding.welcomeTextView.text = testName
+                } else {
+                    Toast.makeText(
+                        this, "Fetch failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        // [END fetch_config_with_callback]
+    }
+
+    //测试没有联络后台的情况下，获取最后的值
+    private fun testServerConfigDef() {
+
         //在后台获取最新的数值
         val testName = remoteConfig.getString("testName")
         logToast("testServerConfigCtr:$testName")
+        binding.welcomeTextView.text = testName
     }
 
 
     /**
      * Fetch a welcome message from the Remote Config service, and then activate it.
+     * 测试获取默认值:因为服务器还没有对应的值，而直接拿默认值
      */
     private fun fetchWelcome() {
         binding.welcomeTextView.text = remoteConfig[LOADING_PHRASE_CONFIG_KEY].asString()
@@ -64,7 +93,7 @@ class RemoteConfigActivity : AppCompatActivity() {
         remoteConfig.fetchAndActivate()
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val updated = task.result
+                    val updated = task.result       //是否后台有最新的更新
                     Log.e(TAG, "Config params updated: $updated")
                     Toast.makeText(
                         this, "Fetch and activate succeeded",

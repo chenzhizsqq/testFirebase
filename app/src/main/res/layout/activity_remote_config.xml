@@ -39,13 +39,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fetchButton"
-            android:text="测试获取默认值" />
+            android:text="获取默认值:因为服务器还没有对应的值，而直接拿默认值" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/testServerConfigCtr"
             android:text="测试获取后台最新的数值" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testServerConfigDef"
+            android:text="没有联络后台的情况下，获取最后的值" />
 
 
     </LinearLayout>
