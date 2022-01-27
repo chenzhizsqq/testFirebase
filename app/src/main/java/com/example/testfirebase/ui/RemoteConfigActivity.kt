@@ -20,7 +20,6 @@ class RemoteConfigActivity : AppCompatActivity() {
         binding = ActivityRemoteConfigBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.fetchButton.setOnClickListener { fetchWelcome() }
 
         // Get Remote Config instance.
         // [START get_remote_config_instance]
@@ -31,8 +30,8 @@ class RemoteConfigActivity : AppCompatActivity() {
         // 设置刷新后台属性的频率
         // [START enable_dev_mode]
         val configSettings = remoteConfigSettings {
-            fetchTimeoutInSeconds = 3600            //读取数据的时间超过指定的超时时间
-            minimumFetchIntervalInSeconds = 3600    //设置最小提取间隔以实现频繁刷新：
+            fetchTimeoutInSeconds = 60            //读取数据的时间超过指定的超时时间
+            minimumFetchIntervalInSeconds = 60    //设置最小提取间隔以实现频繁刷新：
         }
         remoteConfig.setConfigSettingsAsync(configSettings)
         // [END enable_dev_mode]
@@ -42,8 +41,16 @@ class RemoteConfigActivity : AppCompatActivity() {
         remoteConfig.setDefaultsAsync(R.xml.remote_config_defaults)
         // [END set_default_values]
 
-        fetchWelcome()
+        binding.fetchButton.setOnClickListener { fetchWelcome() }
 
+        binding.testServerConfigCtr.setOnClickListener { testServerConfigCtr() }
+    }
+
+    //测试关于后台“配置”后，获取的数值
+    private fun testServerConfigCtr() {
+        //在后台获取最新的数值
+        val testName = remoteConfig.getString("testName")
+        logToast("testServerConfigCtr:$testName")
     }
 
 
@@ -86,6 +93,11 @@ class RemoteConfigActivity : AppCompatActivity() {
         // [END get_config_values]
         binding.welcomeTextView.isAllCaps = remoteConfig[WELCOME_MESSAGE_CAPS_KEY].asBoolean()
         binding.welcomeTextView.text = welcomeMessage
+    }
+
+    private fun logToast(str: String) {
+        Toast.makeText(baseContext, str, Toast.LENGTH_SHORT).show()
+        Log.e(TAG, str)
     }
 
     companion object {

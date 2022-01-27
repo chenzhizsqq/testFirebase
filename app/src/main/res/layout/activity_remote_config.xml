@@ -32,14 +32,20 @@
             android:id="@+id/welcomeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:text="welcomeTextView" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fetchButton"
-            android:text="fetchButton" />
+            android:text="测试获取默认值" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testServerConfigCtr"
+            android:text="测试获取后台最新的数值" />
 
 
     </LinearLayout>
