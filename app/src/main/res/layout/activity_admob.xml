@@ -43,18 +43,25 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:text="simpleCreate"
+            android:text="自己账号的横幅广告"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/simpleCreate"/>
 
         <Button
-            android:text="setTestCreate"
+            android:text="测试账号的横幅广告"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:id="@+id/setTestCreate"/>
+
+        <Button
+            android:text="测试账号的插页式广告"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/setInterstitialAd"/>
 
     </LinearLayout>
 
