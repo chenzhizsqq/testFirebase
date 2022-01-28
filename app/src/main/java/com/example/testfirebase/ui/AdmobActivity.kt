@@ -54,7 +54,7 @@ class AdmobActivity : AppCompatActivity() {
                     mInterstitialAd?.fullScreenContentCallback =
                         object : FullScreenContentCallback() {
                             override fun onAdDismissedFullScreenContent() {
-                                logToast("Ad was dismissed.")
+                                logToast("广告已经关闭了")
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
