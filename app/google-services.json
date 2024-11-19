@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "462644694341",
-    "firebase_url": "https://childtestcz-default-rtdb.firebaseio.com",
-    "project_id": "childtestcz",
-    "storage_bucket": "childtestcz.appspot.com"
+    "project_number": "750262191652",
+    "firebase_url": "https://android11check-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "android11check",
+    "storage_bucket": "android11check.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:462644694341:android:532edc0b8ef4171ab4022c",
+        "mobilesdk_app_id": "1:750262191652:android:bc7afbdfce7d342816fab1",
         "android_client_info": {
-          "package_name": "com.example.testfirebase"
+          "package_name": "com.chenzhizs.checkfirebase11"
         }
       },
       "oauth_client": [
         {
-          "client_id": "462644694341-3v81mssg68ni6ghn67l6g4m9jn7h1lj0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.testfirebase",
-            "certificate_hash": "dae7b10ce2caf13d6e36ef7cd3a9a8eaef49f561"
-          }
-        },
-        {
-          "client_id": "462644694341-1kbh0aoleh5c64vg591nlm4s7c65iccp.apps.googleusercontent.com",
+          "client_id": "750262191652-6c62588b9ti98vvm30gb7o7e40dcce3m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARZwIU0xZzovNVXVKXSxRZAhNDc8Yuy0k"
+          "current_key": "AIzaSyAiEh5xtXiYLN0BOB5_F2NNg2S9stc0Ygk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "462644694341-1kbh0aoleh5c64vg591nlm4s7c65iccp.apps.googleusercontent.com",
+              "client_id": "750262191652-6c62588b9ti98vvm30gb7o7e40dcce3m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
