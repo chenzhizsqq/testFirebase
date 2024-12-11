@@ -2,8 +2,8 @@
     <string name="app_name">testFirebase</string>
 
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'facebook'). -->
-    <string name="facebook_application_id" translatable="false">com.example.testfirebase</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">com.example.testfirebase</string>
+    <string name="facebook_application_id" translatable="false">com.chenzhizs.checkfirebase11</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">com.chenzhizs.checkfirebase11</string>
 
 
     <string name="quickstart_message">Click the SUBSCRIBE TO WEATHER button below to subscribe to the

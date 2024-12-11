@@ -1,11 +1,11 @@
-package com.example.testfirebase
+package com.chenzhizs.checkfirebase11
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testfirebase.databinding.ActivityMainBinding
-import com.example.testfirebase.ui.*
+import com.chenzhizs.checkfirebase11.databinding.ActivityMainBinding
+import com.chenzhizs.checkfirebase11.ui.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding

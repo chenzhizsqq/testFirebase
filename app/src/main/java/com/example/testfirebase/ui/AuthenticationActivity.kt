@@ -1,4 +1,4 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testfirebase.MainActivity
-import com.example.testfirebase.databinding.ActivityAuthenticationBinding
+import com.chenzhizs.checkfirebase11.MainActivity
+import com.chenzhizs.checkfirebase11.databinding.ActivityAuthenticationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

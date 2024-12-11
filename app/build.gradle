@@ -1,7 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
     id 'com.google.gms.google-services'
+    /*
+    必须在firebase的服务网console.firebase.google.com里，下载google-services.json。
+    并放在app/src/ 文件夹里，firebase才能够运行。因为这是私人的账号，所以不方便放在github中共享
+     */
+
     id 'kotlin-kapt'    //引用第三方插件
 }
 
@@ -9,7 +15,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.testfirebase"
+        applicationId "com.chenzhizs.checkfirebase11"
         minSdk 26
         targetSdk 31
         versionCode 1

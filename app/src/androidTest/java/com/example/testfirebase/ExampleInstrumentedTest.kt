@@ -1,4 +1,4 @@
-package com.example.testfirebase
+package com.chenzhizs.checkfirebase11
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.testfirebase", appContext.packageName)
+        assertEquals("com.chenzhizs.checkfirebase11", appContext.packageName)
     }
 }

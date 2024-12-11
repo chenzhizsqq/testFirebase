@@ -1,12 +1,12 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
-import com.example.testfirebase.R
-import com.example.testfirebase.databinding.ActivityAnalyticsBinding
+import com.chenzhizs.checkfirebase11.R
+import com.chenzhizs.checkfirebase11.databinding.ActivityAnalyticsBinding
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent

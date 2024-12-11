@@ -1,4 +1,4 @@
-package com.example.testfirebase
+package com.chenzhizs.checkfirebase11
 
 import org.junit.Test
 

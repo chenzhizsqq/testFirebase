@@ -1,4 +1,4 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testfirebase.databinding.ActivityWriteReadDelBinding
+import com.chenzhizs.checkfirebase11.databinding.ActivityWriteReadDelBinding
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 

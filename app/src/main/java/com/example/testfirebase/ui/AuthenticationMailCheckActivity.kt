@@ -1,11 +1,11 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testfirebase.databinding.ActivityAuthenticationMailCheckBinding
+import com.chenzhizs.checkfirebase11.databinding.ActivityAuthenticationMailCheckBinding
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.actionCodeSettings
@@ -53,7 +53,7 @@ class AuthenticationMailCheckActivity : AppCompatActivity() {
             handleCodeInApp = true
             setIOSBundleId("com.example.ios")
             setAndroidPackageName(
-                "com.example.testfirebase",
+                "com.chenzhizs.checkfirebase11",
                 true, /* installIfNotAvailable */
                 "12" /* minimumVersion */
             )

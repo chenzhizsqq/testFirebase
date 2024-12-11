@@ -1,10 +1,10 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testfirebase.databinding.ActivityFirestoreCrudBinding
+import com.chenzhizs.checkfirebase11.databinding.ActivityFirestoreCrudBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
 //https://blog.csdn.net/cunjie3951/article/details/106918461

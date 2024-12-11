@@ -1,4 +1,4 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -11,8 +11,8 @@ import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.testfirebase.MainActivity
-import com.example.testfirebase.R
+import com.chenzhizs.checkfirebase11.MainActivity
+import com.chenzhizs.checkfirebase11.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 

@@ -1,11 +1,11 @@
-package com.example.testfirebase.ui
+package com.chenzhizs.checkfirebase11.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testfirebase.R
-import com.example.testfirebase.databinding.ActivityGetTokenBinding
+import com.chenzhizs.checkfirebase11.R
+import com.chenzhizs.checkfirebase11.databinding.ActivityGetTokenBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
